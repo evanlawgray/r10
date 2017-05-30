@@ -14,7 +14,7 @@ import About from './About';
 class AboutContainer extends Component {
 
   static propTypes = {
-
+    codes: PropTypes.array.isRequired
   }
 
   static route = {
@@ -36,7 +36,7 @@ class AboutContainer extends Component {
   }
 
   componentDidUpdate() {
-    if ( this.props.codes.conductData && this.state.isLoading ) {
+    if ( this.props.codes && this.state.isLoading ) {
       this.setState({ isLoading: false, });
     }
   }
@@ -48,7 +48,7 @@ class AboutContainer extends Component {
       );
     } else {
       return(
-        <About codes={this.props.codes.conductData} />
+        <About codes={this.props.codes} />
       );
     }
   }
@@ -56,7 +56,7 @@ class AboutContainer extends Component {
 
  function mapStateToProps(state) {
   return {
-    codes: state.conduct,
+    codes: state.conduct.conductData,
   };
 }
 

@@ -17,10 +17,7 @@ export const _fetchConduct = () => (dispatch) => {
 
   return fetch(`${firebaseUrl}/code_of_conduct.json`)
     .then(response => response.json())
-    .then(conduct => {
-      console.log(conduct);
-      dispatch( getConduct( conduct ))
-    })
+    .then(conduct => dispatch( getConduct( conduct )))
     .catch(error => dispatch( getConductError( error )))
 };
 
