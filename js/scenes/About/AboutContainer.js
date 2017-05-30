@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+
+import { _fetchConduct } from '../../redux/modules/conduct';
+
 import {
   ActivityIndicator,
 } from 'react-native';
@@ -29,14 +33,16 @@ class AboutContainer extends Component {
   }
 
   componentDidMount() {
-    let endpoint = 'https://r10app-95fea.firebaseio.com/code_of_conduct.json';
-    fetch(endpoint)
-      // if fetch is successful, read our JSON out of the response
-      .then((response) => response.json())
-      .then((result) => {
-        this.setState({ codes: result });
-      })
-      .catch(error => console.log(`Error fetching JSON: ${error}`));
+    // let endpoint = 'https://r10app-95fea.firebaseio.com/code_of_conduct.json';
+    // fetch(endpoint)
+    //   // if fetch is successful, read our JSON out of the response
+    //   .then((response) => response.json())
+    //   .then((result) => {
+    //     this.setState({ codes: result });
+    //   })
+    //   .catch(error => console.log(`Error fetching JSON: ${error}`));
+
+    _fetchConduct(  );
   }
 
   componentDidUpdate() {
@@ -58,4 +64,10 @@ class AboutContainer extends Component {
   }
  }
 
- export default AboutContainer;
+ function mapStateToProps(state) {
+  return {
+    codes: state.codes,
+  };
+}
+
+ export default connect(mapStateToProps)(AboutContainer);
