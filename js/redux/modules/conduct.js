@@ -13,10 +13,14 @@ const getConduct = ( codes ) => ({ type: GET_CONDUCT, payload: codes });
 
 export const _fetchConduct = () => (dispatch) => {
   dispatch( getConductLoading() );
+  console.log('dispatched getConductLoading!!!!!')
 
   return fetch(`${firebaseUrl}/code_of_conduct.json`)
     .then(response => response.json())
-    .then(conduct => dispatch( getConduct( conduct )))
+    .then(conduct => {
+      console.log(conduct);
+      dispatch( getConduct( conduct ))
+    })
     .catch(error => dispatch( getConductError( error )))
 };
 

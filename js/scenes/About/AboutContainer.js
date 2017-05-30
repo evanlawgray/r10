@@ -27,38 +27,28 @@ class AboutContainer extends Component {
     super();
 
     this.state = {
-      codes: [],
       isLoading: true
     }
   }
 
   componentDidMount() {
-    // let endpoint = 'https://r10app-95fea.firebaseio.com/code_of_conduct.json';
-    // fetch(endpoint)
-    //   // if fetch is successful, read our JSON out of the response
-    //   .then((response) => response.json())
-    //   .then((result) => {
-    //     this.setState({ codes: result });
-    //   })
-    //   .catch(error => console.log(`Error fetching JSON: ${error}`));
-
-    _fetchConduct(  );
+    this.props.dispatch( _fetchConduct() );
   }
 
   componentDidUpdate() {
-    if ( this.state.codes && this.state.isLoading ) {
+    if ( this.props.codes.conductData && this.state.isLoading ) {
       this.setState({ isLoading: false, });
     }
   }
 
   render() {
-    if (this.state.isLoading) {
+    if ( this.state.isLoading ) {
       return (
         <ActivityIndicator style={{ marginTop: 100 }} animating={true} size="large" color="black" />
       );
     } else {
       return(
-        <About codes={this.state.codes} />
+        <About codes={this.props.codes.conductData} />
       );
     }
   }
@@ -66,7 +56,7 @@ class AboutContainer extends Component {
 
  function mapStateToProps(state) {
   return {
-    codes: state.codes,
+    codes: state.conduct,
   };
 }
 
