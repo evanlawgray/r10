@@ -5,6 +5,7 @@ import { colors } from '../../config/styles';
 export const styles = StyleSheet.create({
   codesSubtitle: {
     marginLeft: 20,
+    marginRight: 20,
     marginBottom: 20,
     color: colors.purple,
     fontSize: 14,
