@@ -5,12 +5,12 @@ import {
 
 import Navigation from '../navigation/NavigationLayout'
 import About from '../scenes/About';
-import Session from '../scenes/Session';
+import Schedule from '../scenes/Schedule';
 
 const Router = createRouter(() => ({
   Navigation: () => Navigation,
   About: () => About,
-  Session: () => Session
+  Schedule: () => Schedule
 }));
 
 export default Router;

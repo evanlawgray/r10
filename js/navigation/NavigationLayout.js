@@ -6,6 +6,8 @@ import {
   TabNavigationItem as TabItem,
 } from '@expo/ex-navigation';
 
+import LinearGradient from 'react-native-linear-gradient';
+
 import { Text } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -14,10 +16,13 @@ import { colors, typography } from '../config/styles';
 
 import Router from '../navigation/router';
 
-// const aboutIcon = (<Icon name="information-circle" size={30} color="#900" />);
-// const scheduleIcon = (<Icon name="calendar" size={30} color="#900" />);
-// const favesIcon = (<Icon name="heart" size={30} color="#900" />);
-// const mapIcon = (<Icon name="map" size={30} color="#900" />);
+const styles = {
+  linearGradient: {
+    flex: 1,
+    paddingLeft: 15,
+    paddingRight: 15
+  }
+}
 
 const defaultRouteConfig = {
   navigationBar: {
@@ -25,10 +30,15 @@ const defaultRouteConfig = {
     titleStyle: {
       fontFamily: typography.fontMain,
     },
-    backgroundColor: colors.red,
-    // renderBackground: () => (
-
-    // )
+    renderBackground: () => (
+      <LinearGradient
+        style={ styles.linearGradient }
+        colors={[colors.purple, colors.red]}
+        start={{x: 1, y: 0}}
+        end={{x: -1, y: 1}}
+        locations={[0, .6]}
+      />
+    )
   }
 };
 
@@ -38,6 +48,7 @@ class NavigationLayout extends Component {
       visible: false,
     }
   }
+
 
   renderIcon( iconName, isSelected ) {
     return <Icon name={ iconName } size={25} color={ isSelected ? 'white' : colors.medGrey } />;
@@ -89,8 +100,8 @@ class NavigationLayout extends Component {
         >
           <StackNavigation
             id="schedule"
-            navigatorUID="session"
-            initialRoute={Router.getRoute('Session')}
+            navigatorUID="schedule"
+            initialRoute={Router.getRoute('Schedule', this.props.navigatorUID)}
           />
         </TabItem>
 

@@ -5,10 +5,6 @@ import { connect } from 'react-redux';
 
 import { _fetchConduct } from '../../redux/modules/conduct';
 
-import {
-  ActivityIndicator,
-} from 'react-native';
-
 import About from './About';
 
 class AboutContainer extends Component {
@@ -23,41 +19,30 @@ class AboutContainer extends Component {
     }
   }
 
-  constructor() {
-    super();
-
-    this.state = {
-      isLoading: true
-    }
-  }
-
   componentDidMount() {
-    this.props.dispatch( _fetchConduct() );
-  }
-
-  componentDidUpdate() {
-    if ( this.props.codes && this.state.isLoading ) {
-      this.setState({ isLoading: false, });
-    }
+    this.props.fetchConduct();
   }
 
   render() {
-    if ( this.state.isLoading ) {
-      return (
-        <ActivityIndicator style={{ marginTop: 100 }} animating={true} size="large" color="black" />
-      );
-    } else {
-      return(
-        <About codes={this.props.codes} />
-      );
-    }
+    return(
+      <About isLoading={this.props.isLoading} codes={this.props.codes} />
+    );
   }
  }
 
- function mapStateToProps(state) {
+function mapStateToProps( state ) {
   return {
     codes: state.conduct.conductData,
+    isLoading: state.conduct.isLoading
   };
 }
 
- export default connect(mapStateToProps)(AboutContainer);
+function mapDispatchToProps( dispatch ) {
+  return {
+    fetchConduct() {
+      dispatch( _fetchConduct() )
+    }
+  }
+}
+
+ export default connect(mapStateToProps, mapDispatchToProps)(AboutContainer);
