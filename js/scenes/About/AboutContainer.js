@@ -10,7 +10,8 @@ import About from './About';
 class AboutContainer extends Component {
 
   static propTypes = {
-    codes: PropTypes.array.isRequired
+    codes: PropTypes.array.isRequired,
+    fetchConduct: PropTypes.func.isRequired
   }
 
   static route = {

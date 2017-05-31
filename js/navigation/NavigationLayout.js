@@ -49,7 +49,6 @@ class NavigationLayout extends Component {
     }
   }
 
-
   renderIcon( iconName, isSelected ) {
     return <Icon name={ iconName } size={25} color={ isSelected ? 'white' : colors.medGrey } />;
   }
@@ -101,7 +100,7 @@ class NavigationLayout extends Component {
           <StackNavigation
             id="schedule"
             navigatorUID="schedule"
-            initialRoute={Router.getRoute('Schedule', this.props.navigatorUID)}
+            initialRoute={Router.getRoute('Schedule')}
           />
         </TabItem>
 

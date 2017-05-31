@@ -35,7 +35,7 @@ class ScheduleContainer extends Component {
             <Schedule
               isLoading={ this.props.isLoading }
               sessions={ this.props.dataSource }
-              currentNavigatorUID={ this.props.navigatorUID }
+              currentNavigatorUID='schedule'
             />
         </View>
     );

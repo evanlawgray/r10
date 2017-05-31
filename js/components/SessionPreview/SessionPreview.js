@@ -6,12 +6,19 @@ import {
   TouchableHighlight
 } from 'react-native';
 
+import { colors } from '../../config/styles';
+
 import { goToSession } from '../../lib/navigationHelpers';
+
+import SessionContainer from '../../scenes/Session';
 
 const SessionPreview = ({ currentNavigatorUID, data }) => {
   return (
   <TouchableHighlight
     //add function to pop session to nav stack here...
+    onPress={ () => goToSession( currentNavigatorUID, data ) }
+    underlayColor={ colors.lightGrey }
+    activeOpacity={ 0.5 }
   >
     <View>
       <Text>

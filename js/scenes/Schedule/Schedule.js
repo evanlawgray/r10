@@ -19,7 +19,7 @@ const Schedule = ({ isLoading, sessions, currentNavigatorUID }) => {
     <ActivityIndicator /> :
     <ListView
       dataSource={ sessions }
-      renderRow={(data) => <SessionPreview currentNavigatorUID={currentNavigatorUID} data={data} />}
+      renderRow={(data) => <SessionPreview currentNavigatorUID={ currentNavigatorUID } data={ data } />}
       renderSectionHeader={sectionData => <SectionHeader {...sectionData} />}
     />
   )
