@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
+  Platform,
   Text,
   View,
   TouchableHighlight
@@ -18,7 +19,6 @@ import { goToSession } from '../../lib/navigationHelpers';
 const SessionPreview = ({ currentNavigatorUID, data }) => {
   return (
   <TouchableHighlight
-    //add function to pop session to nav stack here...
     onPress={ () => goToSession( currentNavigatorUID, data ) }
     underlayColor={ colors.lightGrey }
     activeOpacity={ 0.5 }
@@ -30,7 +30,11 @@ const SessionPreview = ({ currentNavigatorUID, data }) => {
       <Text style={ styles.sessionLocation }>
         { data.location }
       </Text>
-      <Icon name={ 'ios-heart' } size={ 15 } style={ styles.heartIcon } />
+      <Icon
+        name={ Platform.OS === 'ios' ? 'ios-heart' : 'md-heart' }
+        size={ 15 }
+        style={ styles.heartIcon }
+      />
     </View>
   </TouchableHighlight>
   )

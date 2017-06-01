@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
+import { Dimensions } from 'react-native';
+
 import {
   StackNavigation,
-  TabNavigation,
-  TabNavigationItem as TabItem,
+  DrawerNavigation,
+  DrawerNavigationItem,
 } from '@expo/ex-navigation';
 
 import LinearGradient from 'react-native-linear-gradient';
@@ -16,11 +18,17 @@ import { colors, typography } from '../config/styles';
 
 import Router from '../navigation/router';
 
+const width = Dimensions.get('window').width;
+
 const styles = {
   linearGradient: {
     flex: 1,
     paddingLeft: 15,
     paddingRight: 15
+  },
+  drawerItemStyles: {
+    width: 0.9 * width,
+    marginHorizontal: 5
   }
 }
 
@@ -42,7 +50,7 @@ const defaultRouteConfig = {
   }
 };
 
-class NavigationLayout extends Component {
+class DrawerNavigationLayout extends Component {
   static route = {
     navigationBar: {
       visible: false,
@@ -50,12 +58,13 @@ class NavigationLayout extends Component {
   }
 
   renderIcon( iconName, isSelected ) {
-    return <Icon name={ iconName } size={25} color={ isSelected ? 'white' : colors.medGrey } />;
+    return <Icon name={ iconName } size={25} color={ isSelected ? colors.purple : colors.medGrey } />;
   }
 
   renderTitle( isSelected, title ) {
     const titleStyle = {
-      color: isSelected ? 'white' : colors.medGrey,
+      paddingLeft: 8,
+      color: isSelected ? 'black' : colors.medGrey,
       fontSize: 12,
       fontFamily: typography.fontMain
     }
@@ -71,31 +80,18 @@ class NavigationLayout extends Component {
 
   render() {
     return(
-      <TabNavigation
+      <DrawerNavigation
         id="main"
         navigatorUID="main"
-        initialTab="about"
+        initialItem="about"
         tabBarColor="black"
+        drawerWidth={ 200 }
       >
-        <TabItem
-          id="about"
-          title="About"
-          renderTitle={ this.renderTitle }
-          renderIcon={ isSelected => this.renderIcon( 'ios-information-circle', isSelected ) }
-        >
-          <StackNavigation
-            id="about"
-            navigatorUID="about"
-            initialRoute={Router.getRoute('About')}
-            defaultRouteConfig={defaultRouteConfig}
-          />
-        </TabItem>
-
-        <TabItem
+        <DrawerNavigationItem
           id="schedule"
           title="Schedule"
-          renderTitle={ this.renderTitle }
-          renderIcon={ isSelected => this.renderIcon( 'ios-calendar', isSelected ) }
+          renderTitle={ isSelected => this.renderTitle( isSelected, 'Schedule' ) }
+          renderIcon={ isSelected => this.renderIcon( 'md-calendar', isSelected ) }
         >
           <StackNavigation
             id="schedule"
@@ -103,12 +99,25 @@ class NavigationLayout extends Component {
             initialRoute={Router.getRoute('Schedule')}
             defaultRouteConfig={defaultRouteConfig}
           />
-        </TabItem>
+        </DrawerNavigationItem>
 
-      </TabNavigation>
+        <DrawerNavigationItem
+          id="about"
+          title="About"
+          renderTitle={ isSelected => this.renderTitle( isSelected, 'About' ) }
+          renderIcon={ isSelected => this.renderIcon( 'md-information-circle', isSelected ) }
+        >
+          <StackNavigation
+            id="about"
+            navigatorUID="about"
+            initialRoute={Router.getRoute('About')}
+            defaultRouteConfig={defaultRouteConfig}
+          />
+        </DrawerNavigationItem>
 
+      </DrawerNavigation>
     );
   }
 }
 
-export default NavigationLayout;
+export default DrawerNavigationLayout;

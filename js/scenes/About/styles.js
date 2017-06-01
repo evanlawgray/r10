@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from '../../config/styles';
+import { colors, typography } from '../../config/styles';
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   imageContainer: {
     marginBottom: 20,
@@ -20,10 +20,13 @@ export const styles = StyleSheet.create({
     marginLeft: 10,
     marginBottom: 20,
     fontSize: 18,
+    fontFamily: typography.fontMain,
     fontWeight: '600'
   },
   codesText: {
     marginBottom: 20,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    fontFamily: typography.fontMain,
+    fontWeight: '400'
   }
 });

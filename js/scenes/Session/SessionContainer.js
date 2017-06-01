@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
@@ -32,5 +33,13 @@ function mapDispatchToProps( dispatch ) {
     }
   }
 }
+
+SessionContainer.propTypes = {
+  fetchSpeaker: PropTypes.func.isRequired,
+  sessionData: PropTypes.object,
+  speakerInfo: PropTypes.object
+}
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionContainer);

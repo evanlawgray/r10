@@ -29,7 +29,6 @@ export const styles = {
     fontWeight: '400'
   },
   heartIcon: {
-    // width: 0.2 * width
     left: 0.08 * width,
     color: colors.red
   }

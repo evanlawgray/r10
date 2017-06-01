@@ -15,6 +15,6 @@ export const styles = {
   separator: {
     flex: 1,
     height: StyleSheet.hairlineWidth,
-    backgroundColor: '#8E8E8E',
+    backgroundColor: colors.medGrey,
   },
 }
