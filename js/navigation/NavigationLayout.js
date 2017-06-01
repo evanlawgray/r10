@@ -101,6 +101,7 @@ class NavigationLayout extends Component {
             id="schedule"
             navigatorUID="schedule"
             initialRoute={Router.getRoute('Schedule')}
+            defaultRouteConfig={defaultRouteConfig}
           />
         </TabItem>
 

@@ -20,9 +20,19 @@ const Schedule = ({ isLoading, sessions, currentNavigatorUID }) => {
     <ListView
       dataSource={ sessions }
       renderRow={(data) => <SessionPreview currentNavigatorUID={ currentNavigatorUID } data={ data } />}
-      renderSectionHeader={sectionData => <SectionHeader {...sectionData} />}
+      renderSectionHeader={
+        ( sectionData, time ) => (
+          <SectionHeader sectionData={ sectionData } time={ time } style={ styles.sectionHeader } />
+        )}
+      renderSeparator={(sectionId, rowId) => <View key={rowId} style={ styles.separator } />}
     />
   )
+}
+
+Schedule.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  sessions: PropTypes.object.isRequired,
+  currentNavigatorUID: PropTypes.string.isRequired
 }
 
 export default Schedule;
