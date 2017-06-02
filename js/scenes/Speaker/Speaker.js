@@ -9,14 +9,21 @@ import {
 
 import { styles } from './styles';
 
+import { removeSpeaker } from '../../lib/navigationHelpers';
+
 const Speaker = ({ speakerInfo }) => (
   <View>
     <View style={ styles.speakerHeader }>
-      <Text>X</Text>
-      <Text>About The Speaker</Text>
+      <Text
+        style={ styles.exitButton }
+        onPress={ () => removeSpeaker() }
+      >
+        X
+      </Text>
+      <Text style={ styles.headerText }>About The Speaker</Text>
     </View>
     <Image style={styles.speakerImage} source={{ uri:speakerInfo.image }} />
-    <Text>{ speakerInfo.name }</Text>
+    <Text>{ speakerInfo.name }!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</Text>
   </View>
 );
 

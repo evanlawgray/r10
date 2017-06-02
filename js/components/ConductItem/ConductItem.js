@@ -24,6 +24,7 @@ class ConductItem extends Component {
 
   onPress = () => {
     if(this.state.expanded === false) {
+
       Animated.timing(
         this.state.rotateValue,
         { toValue: 1, duration: 450 }
@@ -32,6 +33,7 @@ class ConductItem extends Component {
       LayoutAnimation.linear();
       this.setState({ expanded: true})
     } else {
+
       Animated.timing(
         this.state.rotateValue,
         { toValue: 0, duration: 450 }
