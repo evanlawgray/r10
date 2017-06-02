@@ -1,6 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
-import { colors } from '../../config/styles';
+import { colors, typography } from '../../config/styles';
+
+const width = Dimensions.get('window').width;
 
 export const styles = StyleSheet.create({
   codesSubtitle: {
@@ -22,8 +24,14 @@ export const styles = StyleSheet.create({
     color: colors.purple,
     textAlign: 'center'
   },
-  codesText: {
-    marginBottom: 20,
-    paddingHorizontal: 10
-  }
+  codeWrapper: {
+    width: width,
+    marginBottom: 15,
+    paddingHorizontal: 15,
+    overflow: 'hidden',
+  },
+  codeText: {
+    color: colors.medGrey,
+    fontFamily: typography.fontMain
+  },
 });

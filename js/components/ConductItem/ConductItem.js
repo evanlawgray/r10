@@ -12,15 +12,12 @@ import {
 import { styles } from './styles';
 import { colors, typography } from '../../config/styles.js';
 
-const width = Dimensions.get('window').width;
-
 class ConductItem extends Component {
   constructor() {
     super();
 
     this.state = {
       expanded: false,
-      codeHeight: 0,
       rotateValue: new Animated.Value( 0 )
     }
   }
@@ -33,7 +30,7 @@ class ConductItem extends Component {
       ).start();
 
       LayoutAnimation.linear();
-      this.setState({ expanded: true, codeHeight: 'auto'})
+      this.setState({ expanded: true})
     } else {
       Animated.timing(
         this.state.rotateValue,
@@ -41,7 +38,7 @@ class ConductItem extends Component {
       ).start();
 
       LayoutAnimation.linear();
-      this.setState({ expanded: false, codeHeight: 0})
+      this.setState({ expanded: false})
     }
   }
 
@@ -53,18 +50,6 @@ class ConductItem extends Component {
     });
 
     let animatedStyles = {
-      codeWrapper: {
-        height: this.state.codeHeight,
-        width: width,
-        marginBottom: 15,
-        paddingHorizontal: 15,
-        overflow: 'hidden',
-      },
-      code: {
-        height: this.state.codeHeight,
-        color: colors.medGrey,
-        fontFamily: typography.fontMain
-      },
       expandSymbol: {
         transform: [
           { 'rotate': rotation },
@@ -93,8 +78,11 @@ class ConductItem extends Component {
           </View>
         </TouchableWithoutFeedback>
 
-        <View style={ animatedStyles.codeWrapper }>
-          <Text style={ animatedStyles.code }>{ this.props.code.description }</Text>
+        <View style={ styles.codeWrapper }>
+          {
+            this.state.expanded &&
+              <Text style={ styles.codeText }>{ this.props.code.description }</Text>
+          }
         </View>
       </View>
     );

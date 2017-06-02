@@ -15,3 +15,10 @@ export const goToSpeaker = ( speakerInfo ) => {
     Router.getRoute( 'Speaker', { speakerInfo } )
   ));
 }
+
+export const removeSpeaker = () => {
+  Store.dispatch(NavigationActions.pop(
+    'root',
+    Router.getRoute( 'Speaker' )
+  ));
+}

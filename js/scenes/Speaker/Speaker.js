@@ -11,6 +11,10 @@ import { styles } from './styles';
 
 const Speaker = ({ speakerInfo }) => (
   <View>
+    <View style={ styles.speakerHeader }>
+      <Text>X</Text>
+      <Text>About The Speaker</Text>
+    </View>
     <Image style={styles.speakerImage} source={{ uri:speakerInfo.image }} />
     <Text>{ speakerInfo.name }</Text>
   </View>
