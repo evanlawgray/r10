@@ -11,7 +11,7 @@ export const goToSession = ( currentNavigatorUID, sessionData ) => {
 
 export const goToSpeaker = ( speakerInfo ) => {
   Store.dispatch(NavigationActions.push(
-    'main',
+    'root',
     Router.getRoute( 'Speaker', { speakerInfo } )
   ));
 }

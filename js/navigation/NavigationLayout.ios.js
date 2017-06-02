@@ -50,7 +50,7 @@ class NavigationLayout extends Component {
   }
 
   renderIcon( iconName, isSelected ) {
-    return <Icon name={ iconName } size={25} color={ isSelected ? 'white' : colors.medGrey } />;
+    return <Icon name={ iconName } size={ 25 } color={ isSelected ? 'white' : colors.medGrey } />;
   }
 
   renderTitle( isSelected, title ) {

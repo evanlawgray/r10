@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import {
+  Animated,
+  LayoutAnimation,
   View,
   Text
 } from 'react-native';
 
 import { styles } from './styles';
 
-const ConductItem = ({ code }) => {
-  return (
-    // <View>
-    //   <Text style={ styles.codesSubtitle }>{ code.title }</Text>
-    //   <Text style={ styles.codesText }>{ code.description }</Text>
-    // </View>
-    <View>
-      <Text style={ styles.codesSubtitle }>{ code.title }</Text>
-      <Text style={ styles.codesText }>{ code.description }</Text>
-    </View>
-  );
+class ConductItem extends Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    return(
+      <View>
+        <Text style={ styles.codesSubtitle }>{ this.props.code.title }</Text>
+        <Text style={ styles.codesText }>{ this.props.code.description }</Text>
+      </View>
+    );
+  }
 }
 
 export default ConductItem;

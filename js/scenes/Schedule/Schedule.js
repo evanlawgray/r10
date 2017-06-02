@@ -13,13 +13,20 @@ import { styles } from './styles';
 import SessionPreview from '../../components/SessionPreview';
 import SectionHeader from '../../components/SectionHeader';
 
-const Schedule = ({ isLoading, sessions, currentNavigatorUID }) => {
+const Schedule = ({ isLoading, isLoadingFaves, sessions, currentNavigatorUID, faveIds }) => {
   return (
-    isLoading ?
+    isLoading || isLoadingFaves || !faveIds ?
     <ActivityIndicator /> :
     <ListView
       dataSource={ sessions }
-      renderRow={(data) => <SessionPreview currentNavigatorUID={ currentNavigatorUID } data={ data } />}
+      renderRow={
+        (data) =>
+          <SessionPreview
+            currentNavigatorUID={ currentNavigatorUID }
+            data={ data }
+            faveIds={ faveIds }
+          />
+      }
       renderSectionHeader={
         ( sectionData, time ) => (
           <SectionHeader sectionData={ sectionData } time={ time } style={ styles.sectionHeader } />
@@ -31,8 +38,10 @@ const Schedule = ({ isLoading, sessions, currentNavigatorUID }) => {
 
 Schedule.propTypes = {
   isLoading: PropTypes.bool.isRequired,
+  isLoadingFaves: PropTypes.bool.isRequired,
   sessions: PropTypes.object.isRequired,
-  currentNavigatorUID: PropTypes.string.isRequired
+  currentNavigatorUID: PropTypes.string.isRequired,
+  faveIds: PropTypes.array
 }
 
 export default Schedule;

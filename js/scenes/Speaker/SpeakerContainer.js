@@ -7,18 +7,22 @@ import Speaker from './Speaker';
 
 class SpeakerContainer extends Component {
 
+  constructor() {
+    super();
+  }
+
   render() {
     return (
-      <Speaker speakerInfo={ this.props.speakerInfo }/>
-    )
+      <Speaker speakerInfo={ this.props.speakerInfo } />
+    );
   }
 }
 
-function mapStateToProps( state ) {
-  return {
-    speakerInfo: state.speakers.speakerInfo
-  }
-}
+// function mapStateToProps( state ) {
+//   return {
+//     speakerInfo: state.speakers.speakerInfo
+//   }
+// }
 
 // function mapDispatchToProps( dispatch ) {
 //   return {
@@ -29,6 +33,6 @@ SpeakerContainer.propTypes = {
   speakerInfo: PropTypes.object
 }
 
+// export default connect(mapStateToProps)(SpeakerContainer);
 
-
-export default connect(mapStateToProps)(SpeakerContainer);
+export default SpeakerContainer;

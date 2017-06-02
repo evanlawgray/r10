@@ -7,7 +7,7 @@ import Navigation from '../navigation/NavigationLayout'
 import About from '../scenes/About';
 import Schedule from '../scenes/Schedule';
 import Session from '../scenes/Session';
-import Speaker from '../scenes/Speaker'
+import Speaker from '../scenes/Speaker';
 
 const Router = createRouter(() => ({
   Navigation: () => Navigation,
