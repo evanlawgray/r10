@@ -7,6 +7,7 @@
 import {
   NavigationContext,
   NavigationProvider,
+  NavigationStyles,
   StackNavigation,
 } from '@expo/ex-navigation';
 
@@ -34,6 +35,9 @@ export default class r10 extends Component {
             id='root'
             navigatorUID='root'
             initialRoute={Router.getRoute('Navigation')}
+            defaultRouteConfig={{
+              styles: { ...NavigationStyles.SlideVertical }
+            }}
           />
         </NavigationProvider>
       </Provider>
