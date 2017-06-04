@@ -9,20 +9,27 @@ import Session from './Session';
 
 class SessionContainer extends Component {
 
+  static route = {
+    navigationBar: {
+      title: 'Session',
+    }
+  }
+
   componentDidMount() {
     this.props.fetchSpeaker( this.props.sessionData.speaker );
   }
 
   render() {
     return (
-      <Session sessionData={ this.props.sessionData } speakerInfo={ this.props.speakerInfo }/>
+      <Session faveIds={ this.props.faveIds } sessionData={ this.props.sessionData } speakerInfo={ this.props.speakerInfo }/>
     )
   }
 }
 
 function mapStateToProps( state ) {
   return {
-    speakerInfo: state.speakers.speakerInfo
+    speakerInfo: state.speakers.speakerInfo,
+    faveIds: state.faves.faveIds
   }
 }
 
@@ -35,6 +42,7 @@ function mapDispatchToProps( dispatch ) {
 }
 
 SessionContainer.propTypes = {
+  faveIds: PropTypes.array,
   fetchSpeaker: PropTypes.func.isRequired,
   sessionData: PropTypes.object,
   speakerInfo: PropTypes.object

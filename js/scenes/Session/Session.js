@@ -8,6 +8,7 @@ import {
   Platform,
   Text,
   View,
+  ScrollView,
   TouchableHighlight,
   Image
 } from 'react-native';
@@ -26,48 +27,67 @@ import { createFave } from '../../config/models';
 
 import Button from '../../components/Button';
 
-const Session = ({ sessionData, speakerInfo }) => (
-  <View>
-    <View>
-      <Text>
+const Session = ({ faveIds, sessionData, speakerInfo }) => (
+  <ScrollView style={ styles.contentWrapper }>
+    <View style={ styles.headerContainer }>
+      <Text style={ styles.locationText }>
         { sessionData.location }
       </Text>
 
-      <Icon
-        name={ Platform.OS === 'ios' ? 'ios-heart' : 'md-heart' }
-        size={ 24 }
-        style={ styles.heartIcon }
-      />
+      {
+        faveIds.includes( sessionData.session_id ) &&
+          <Icon
+            name={ Platform.OS === 'ios' ? 'ios-heart' : 'md-heart' }
+            size={ 16 }
+            style={ styles.heartIcon }
+          />
+      }
     </View>
 
-    <Text>{ sessionData.title }</Text>
+    <Text style={ styles.sessionTitle }>
+      { sessionData.title }
+    </Text>
 
-    <Text>{ moment.unix(sessionData.start_time).format('h:mm A') }</Text>
+    <Text style={ styles.startTime }>
+      { moment.unix(sessionData.start_time).format('h:mm A') }
+    </Text>
 
-    <Text>
+    <Text style={ styles.description }>
       { sessionData.description }
     </Text>
 
     <TouchableHighlight
+      style={ styles.speakerHighlight }
       onPress={ () => goToSpeaker( speakerInfo ) }
       underlayColor={ colors.lightGrey }
       activeOpacity={ 0.5 }
     >
-      <View>
-        <Text>Presented by:</Text>
-        <Image style={styles.speakerImage} source={{ uri:speakerInfo.image }} />
+      <View style={ styles.speakerContainer }>
+        <Text style={ styles.presentedBy }>
+          Presented by:
+        </Text>
+
+        <Image style={ styles.speakerImage } source={{ uri:speakerInfo.image }} />
+        <Text style={ styles.speakerName }>
+          { speakerInfo.name }
+        </Text>
+
+        <View style={ styles.separator } />
       </View>
     </TouchableHighlight>
 
     <View style={ styles.buttonContainer }>
       <Button buttonText='Add To Faves' onPress={ createFave } data={ sessionData.session_id } />
     </View>
-  </View>
+  </ScrollView>
 );
 
+
+
 Session.propTypes = {
-  sessionData: PropTypes.object,
-  speakerInfo: PropTypes.object
+  faveIds: PropTypes.array,
+  sessionData: PropTypes.object.isRequired,
+  speakerInfo: PropTypes.object.isRequired
 }
 
 export default Session;
