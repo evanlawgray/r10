@@ -8,6 +8,8 @@ import {
   ListView
 } from 'react-native';
 
+import realm from '../../config/models';
+
 import { _fetchSessions } from '../../redux/modules/sessions';
 import { _fetchFaves } from '../../redux/modules/faves';
 
@@ -24,6 +26,11 @@ class ScheduleContainer extends Component {
   componentDidMount() {
     this.props.fetchSessions();
     this.props.fetchFaves();
+
+    realm.addListener('change', () => {
+      this.props.fetchSessions();
+      this.props.fetchFaves();
+    });
   }
 
   render() {

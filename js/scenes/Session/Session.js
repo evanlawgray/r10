@@ -55,27 +55,28 @@ const Session = ({ faveIds, sessionData, speakerInfo }) => (
     <Text style={ styles.description }>
       { sessionData.description }
     </Text>
+    {
+      speakerInfo &&
+        <TouchableHighlight
+          style={ styles.speakerHighlight }
+          onPress={ () => goToSpeaker( speakerInfo ) }
+          underlayColor={ colors.lightGrey }
+          activeOpacity={ 0.5 }
+        >
+          <View style={ styles.speakerContainer }>
+            <Text style={ styles.presentedBy }>
+              Presented by:
+            </Text>
 
-    <TouchableHighlight
-      style={ styles.speakerHighlight }
-      onPress={ () => goToSpeaker( speakerInfo ) }
-      underlayColor={ colors.lightGrey }
-      activeOpacity={ 0.5 }
-    >
-      <View style={ styles.speakerContainer }>
-        <Text style={ styles.presentedBy }>
-          Presented by:
-        </Text>
+            <Image style={ styles.speakerImage } source={{ uri:speakerInfo.image }} />
+            <Text style={ styles.speakerName }>
+              { speakerInfo.name }
+            </Text>
 
-        <Image style={ styles.speakerImage } source={{ uri:speakerInfo.image }} />
-        <Text style={ styles.speakerName }>
-          { speakerInfo.name }
-        </Text>
-
-        <View style={ styles.separator } />
-      </View>
-    </TouchableHighlight>
-
+            <View style={ styles.separator } />
+          </View>
+        </TouchableHighlight>
+    }
     <View style={ styles.buttonContainer }>
       <Button buttonText='Add To Faves' onPress={ createFave } data={ sessionData.session_id } />
     </View>
@@ -86,8 +87,8 @@ const Session = ({ faveIds, sessionData, speakerInfo }) => (
 
 Session.propTypes = {
   faveIds: PropTypes.array,
-  sessionData: PropTypes.object.isRequired,
-  speakerInfo: PropTypes.object.isRequired
+  sessionData: PropTypes.object,
+  speakerInfo: PropTypes.object
 }
 
 export default Session;

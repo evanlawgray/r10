@@ -27,11 +27,13 @@ export const styles = StyleSheet.create({
   codeWrapper: {
     width: width,
     marginBottom: 15,
-    paddingHorizontal: 15,
     overflow: 'hidden',
   },
   codeText: {
-    color: colors.medGrey,
-    fontFamily: typography.fontMain
+    maxWidth: width - 20,
+    color: 'black',
+    fontSize: 14,
+    fontFamily: typography.fontMain,
+    fontWeight: '200'
   },
 });

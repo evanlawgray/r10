@@ -19,8 +19,6 @@ import { styles } from './styles';
 import { goToSession } from '../../lib/navigationHelpers';
 
 const SessionPreview = ({ currentNavigatorUID, data, faveIds }) => {
-  console.log('favedSessions', faveIds);
-  console.log('session data', data);
 
   let isFaved;
 
@@ -31,15 +29,19 @@ const SessionPreview = ({ currentNavigatorUID, data, faveIds }) => {
         activeOpacity={ 0.5 }
       >
       <View style={ styles.listItem }>
+
         <Text style={ styles.sessionTitle }>
           { data.title }
         </Text>
+
         <Text style={ styles.sessionLocation }>
           { data.location }
         </Text>
+
         {
           isFaved = faveIds.includes(data.session_id)
         }
+
         {
           !isFaved &&
           <Icon
@@ -48,6 +50,7 @@ const SessionPreview = ({ currentNavigatorUID, data, faveIds }) => {
             style={ styles.heartIcon }
           />
         }
+
       </View>
     </TouchableHighlight>
   )

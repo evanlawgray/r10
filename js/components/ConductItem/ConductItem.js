@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import {
   Animated,
   LayoutAnimation,
+  Platform,
+  UIManager,
   TouchableWithoutFeedback,
   View,
   Text,
@@ -19,6 +21,11 @@ class ConductItem extends Component {
     this.state = {
       expanded: false,
       rotateValue: new Animated.Value( 0 )
+    }
+
+    if (Platform.OS === 'android') {
+      UIManager.setLayoutAnimationEnabledExperimental
+      && UIManager.setLayoutAnimationEnabledExperimental(true);
     }
   }
 

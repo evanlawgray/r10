@@ -4,12 +4,13 @@ import { colors, typography } from '../../config/styles';
 
 export const styles = StyleSheet.create({
   container: {
+    paddingHorizontal: 10,
     backgroundColor: '#fff',
   },
   imageContainer: {
     marginBottom: 20,
-    paddingTop: 40,
-    paddingBottom: 25,
+    paddingTop: 25,
+    paddingBottom: 15,
     borderBottomColor: colors.lightGrey,
     borderBottomWidth: 1,
     flexDirection: 'row',
@@ -17,16 +18,15 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   codesTitle: {
-    marginLeft: 10,
     marginBottom: 20,
-    fontSize: 18,
+    fontSize: 22,
     fontFamily: typography.fontMain,
     fontWeight: '600'
   },
   codesText: {
     marginBottom: 20,
-    paddingHorizontal: 10,
+    fontSize: 14,
     fontFamily: typography.fontMain,
-    fontWeight: '400'
+    fontWeight: '200'
   }
 });
