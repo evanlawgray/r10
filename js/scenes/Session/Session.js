@@ -24,6 +24,8 @@ import { goToSpeaker } from '../../lib/navigationHelpers';
 
 import { createFave } from '../../config/models';
 
+import Button from '../../components/Button';
+
 const Session = ({ sessionData, speakerInfo }) => (
   <View>
     <View>
@@ -57,19 +59,9 @@ const Session = ({ sessionData, speakerInfo }) => (
       </View>
     </TouchableHighlight>
 
-    <TouchableOpacity
-      onPress={ () => createFave( sessionData.session_id ) }
-    >
-      <LinearGradient
-        style={ styles.linearGradient }
-        colors={[colors.blue, colors.purple]}
-        start={{x: 1, y: 0}}
-        end={{x: -1, y: 1}}
-        locations={[0, .6]}
-      >
-      <Text style={ styles.buttonText }>Add To Faves</Text>
-      </LinearGradient>
-    </TouchableOpacity>
+    <View style={ styles.buttonContainer }>
+      <Button buttonText='Add To Faves' onPress={ createFave } data={ sessionData.session_id } />
+    </View>
   </View>
 );
 
