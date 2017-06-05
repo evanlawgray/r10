@@ -11,7 +11,7 @@ import {
 import { styles } from './styles.js';
 
 const SectionHeader = ({ time }) => (
-  <View>
+  <View style={ styles.sectionHeader }>
     <Text style={ styles.timeHeader }>{moment.unix(time).format('h:mm A')}</Text>
   </View>
 );

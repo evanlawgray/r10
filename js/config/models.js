@@ -10,7 +10,6 @@ const Fave = {
 };
 
 const realm = new Realm({schema: [Fave]});
-console.log('the path is: ', realm.path);
 
 // CRUD OPERATIONS!
 

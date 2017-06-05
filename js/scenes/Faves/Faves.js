@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {
   ActivityIndicator,
   View,
-  Text,
   ListView,
 } from 'react-native';
 
@@ -13,10 +12,12 @@ import { styles } from './styles';
 import SessionPreview from '../../components/SessionPreview';
 import SectionHeader from '../../components/SectionHeader';
 
-const Schedule = ({ isLoading, isLoadingFaves, sessions, currentNavigatorUID, faveIds }) => {
+const Faves = ({ isLoading, isLoadingFaves, sessions, currentNavigatorUID, faveIds }) => {
   return (
-    isLoading || isLoadingFaves || !faveIds ?
+    isLoading || isLoadingFaves ?
+
     <ActivityIndicator size='large' style={ styles.loadingSpinner }/> :
+
     <ListView
       dataSource={ sessions }
       renderRow={
@@ -29,14 +30,14 @@ const Schedule = ({ isLoading, isLoadingFaves, sessions, currentNavigatorUID, fa
       }
       renderSectionHeader={
         ( sectionData, time ) => (
-          <SectionHeader sectionData={ sectionData } time={ time } />
+          <SectionHeader sectionData={ sectionData } time={ time } style={ styles.sectionHeader } />
         )}
       renderSeparator={(sectionId, rowId) => <View key={rowId} style={ styles.separator } />}
     />
   )
 }
 
-Schedule.propTypes = {
+Faves.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   isLoadingFaves: PropTypes.bool.isRequired,
   sessions: PropTypes.object.isRequired,
@@ -44,4 +45,4 @@ Schedule.propTypes = {
   faveIds: PropTypes.array
 }
 
-export default Schedule;
+export default Faves;

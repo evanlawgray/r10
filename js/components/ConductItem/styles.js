@@ -6,14 +6,13 @@ const width = Dimensions.get('window').width;
 
 export const styles = StyleSheet.create({
   codesSubtitle: {
-    marginHorizontal: 20,
+    marginHorizontal: 10,
     marginBottom: 10,
     color: colors.purple,
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '600'
   },
   codesHeader: {
-    paddingHorizontal: 20,
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start'
@@ -32,7 +31,7 @@ export const styles = StyleSheet.create({
   codeText: {
     maxWidth: width - 20,
     color: 'black',
-    fontSize: 14,
+    fontSize: 16,
     fontFamily: typography.fontMain,
     fontWeight: '200'
   },

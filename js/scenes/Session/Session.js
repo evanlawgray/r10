@@ -23,7 +23,7 @@ import { styles } from './styles';
 
 import { goToSpeaker } from '../../lib/navigationHelpers';
 
-import { createFave } from '../../config/models';
+import { createFave, deleteFave } from '../../config/models';
 
 import Button from '../../components/Button';
 
@@ -78,7 +78,12 @@ const Session = ({ faveIds, sessionData, speakerInfo }) => (
         </TouchableHighlight>
     }
     <View style={ styles.buttonContainer }>
-      <Button buttonText='Add To Faves' onPress={ createFave } data={ sessionData.session_id } />
+      {
+        faveIds.includes( sessionData.session_id ) ?
+          <Button buttonText='Remove From Faves' onPress={ deleteFave } data={ sessionData.session_id } /> :
+          <Button buttonText='Add To Faves' onPress={ createFave } data={ sessionData.session_id } />
+      }
+
     </View>
   </ScrollView>
 );

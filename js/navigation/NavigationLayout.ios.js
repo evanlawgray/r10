@@ -74,7 +74,7 @@ class NavigationLayout extends Component {
       <TabNavigation
         id="main"
         navigatorUID="main"
-        initialTab="about"
+        initialTab="schedule"
         tabBarColor="black"
       >
         <TabItem
@@ -87,6 +87,20 @@ class NavigationLayout extends Component {
             id="schedule"
             navigatorUID="schedule"
             initialRoute={Router.getRoute('Schedule')}
+            defaultRouteConfig={defaultRouteConfig}
+          />
+        </TabItem>
+
+        <TabItem
+          id="faves"
+          title="Faves"
+          renderTitle={ this.renderTitle }
+          renderIcon={ isSelected => this.renderIcon( 'ios-heart', isSelected ) }
+        >
+          <StackNavigation
+            id="faves"
+            navigatorUID="faves"
+            initialRoute={Router.getRoute('Faves')}
             defaultRouteConfig={defaultRouteConfig}
           />
         </TabItem>

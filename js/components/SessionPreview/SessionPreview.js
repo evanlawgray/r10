@@ -43,7 +43,7 @@ const SessionPreview = ({ currentNavigatorUID, data, faveIds }) => {
         }
 
         {
-          !isFaved &&
+          isFaved &&
           <Icon
             name={ Platform.OS === 'ios' ? 'ios-heart' : 'md-heart' }
             size={ 15 }

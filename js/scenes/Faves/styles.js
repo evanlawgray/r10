@@ -1,6 +1,6 @@
 import { Dimensions } from 'react-native';
 
-import { colors, typography } from '../../config/styles';
+import { colors } from '../../config/styles';
 
 import { StyleSheet } from 'react-native';
 
@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   sectionHeader: {
     paddingVertical: 5,
     paddingHorizontal: 10,
-    backgroundColor: colors.lightGrey,
+    backgroundColor: colors.lightGrey
   },
   separator: {
     flex: 1,

@@ -72,26 +72,33 @@ class ConductItem extends Component {
           onPress={ this.onPress }
         >
           <View style={ styles.codesHeader }>
+
             {
-            this.state.expanded ?
+              this.state.expanded ?
+
                 <Animated.Text
                   style={[styles.expandSymbol, animatedStyles.expandSymbol ]}
                 >-</Animated.Text> :
+
                 <Animated.Text
                   style={[styles.expandSymbol, animatedStyles.expandSymbol ]}
                 >+</Animated.Text>
             }
+
             <Text style={ styles.codesSubtitle }>
               { this.props.code.title }
             </Text>
+
           </View>
         </TouchableWithoutFeedback>
 
         <View style={ styles.codeWrapper }>
+
           {
             this.state.expanded &&
               <Text style={ styles.codeText }>{ this.props.code.description }</Text>
           }
+
         </View>
       </View>
     );

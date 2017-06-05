@@ -83,7 +83,7 @@ class DrawerNavigationLayout extends Component {
       <DrawerNavigation
         id="main"
         navigatorUID="main"
-        initialItem="about"
+        initialItem="schedule"
         tabBarColor="black"
         drawerWidth={ 200 }
       >
@@ -97,6 +97,20 @@ class DrawerNavigationLayout extends Component {
             id="schedule"
             navigatorUID="schedule"
             initialRoute={Router.getRoute('Schedule')}
+            defaultRouteConfig={defaultRouteConfig}
+          />
+        </DrawerNavigationItem>
+
+        <DrawerNavigationItem
+          id="faves"
+          title="Faves"
+          renderTitle={ isSelected => this.renderTitle( isSelected, 'Faves' ) }
+          renderIcon={ isSelected => this.renderIcon( 'md-heart', isSelected ) }
+        >
+          <StackNavigation
+            id="faves"
+            navigatorUID="faves"
+            initialRoute={Router.getRoute('Faves')}
             defaultRouteConfig={defaultRouteConfig}
           />
         </DrawerNavigationItem>
