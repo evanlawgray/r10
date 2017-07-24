@@ -33,10 +33,10 @@ const defaultRouteConfig = {
     renderBackground: () => (
       <LinearGradient
         style={ styles.linearGradient }
-        colors={[colors.purple, colors.red]}
-        start={{x: 1, y: 0}}
-        end={{x: -1, y: 1}}
-        locations={[0, .6]}
+        colors={ [colors.purple, colors.red] }
+        start={ {x: 1, y: 0} }
+        end={ {x: -1, y: 1} }
+        locations={ [0, .6] }
       />
     )
   }
@@ -100,8 +100,8 @@ class NavigationLayout extends Component {
           <StackNavigation
             id="faves"
             navigatorUID="faves"
-            initialRoute={Router.getRoute('Faves')}
-            defaultRouteConfig={defaultRouteConfig}
+            initialRoute={ Router.getRoute('Faves') }
+            defaultRouteConfig={ defaultRouteConfig }
           />
         </TabItem>
 
@@ -114,8 +114,8 @@ class NavigationLayout extends Component {
           <StackNavigation
             id="about"
             navigatorUID="about"
-            initialRoute={Router.getRoute('About')}
-            defaultRouteConfig={defaultRouteConfig}
+            initialRoute={ Router.getRoute('About') }
+            defaultRouteConfig={ defaultRouteConfig }
           />
         </TabItem>
 
