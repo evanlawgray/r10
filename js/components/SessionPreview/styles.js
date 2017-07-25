@@ -15,9 +15,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-start'
   },
   sessionTitle: {
-    height: 20,
     width: width,
-    marginHorizontal: 5,
+    marginRight: 20,
     marginBottom: 10,
     fontSize: 14,
     fontFamily: typography.fontmain,
