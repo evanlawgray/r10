@@ -6,7 +6,8 @@ import {
   View,
   Image,
   ScrollView,
-  Linking
+  Linking,
+  ActivityIndicator
 } from 'react-native';
 
 import { styles } from './styles';
@@ -30,7 +31,12 @@ const Speaker = ({ speakerInfo }) => (
 
     <ScrollView>
     <View style={ styles.speakerWrapper }>
-      <Image style={styles.speakerImage} source={{ uri:speakerInfo.image }} />
+      {
+        speakerInfo.image ?
+          <Image style={styles.speakerImage} source={{ uri:speakerInfo.image }} />
+          :
+          <ActivityIndicator size='large' style={ styles.loadingSpinner }/>
+      }
       <Text style={ styles.speakerName }>{ speakerInfo.name }</Text>
       <Text style={ styles.speakerBio }>{ speakerInfo.bio }</Text>
 

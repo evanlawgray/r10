@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import {
-  TouchableOpacity,
+  ActivityIndicator,
   Platform,
   Text,
   View,
@@ -68,7 +68,13 @@ const Session = ({ faveIds, sessionData, speakerInfo }) => (
               Presented by:
             </Text>
 
-            <Image style={ styles.speakerImage } source={{ uri:speakerInfo.image }} />
+            {
+              speakerInfo.image ?
+                <Image style={styles.speakerImage} source={{ uri:speakerInfo.image }} />
+                :
+                <ActivityIndicator size='large' style={ styles.loadingSpinner }/>
+            }
+
             <Text style={ styles.speakerName }>
               { speakerInfo.name }
             </Text>
@@ -80,10 +86,17 @@ const Session = ({ faveIds, sessionData, speakerInfo }) => (
     <View style={ styles.buttonContainer }>
       {
         faveIds.includes( sessionData.session_id ) ?
-          <Button buttonText='Remove From Faves' onPress={ deleteFave } data={ sessionData.session_id } /> :
-          <Button buttonText='Add To Faves' onPress={ createFave } data={ sessionData.session_id } />
+          <Button
+            buttonText='Remove From Faves'
+            onPress={ deleteFave }
+            data={ sessionData.session_id }
+          /> :
+          <Button
+            buttonText='Add To Faves'
+            onPress={ createFave }
+            data={ sessionData.session_id }
+          />
       }
-
     </View>
   </ScrollView>
 );

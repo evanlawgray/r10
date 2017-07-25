@@ -63,7 +63,7 @@ export const styles = StyleSheet.create({
   },
   speakerBio: {
     flex: 1,
-    height: 'auto',
+    marginBottom: 20,
     color: 'black',
     fontSize: 16,
     fontWeight: '200',

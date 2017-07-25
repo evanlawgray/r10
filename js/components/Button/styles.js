@@ -16,8 +16,7 @@ export const styles = StyleSheet.create({
     borderRadius: 50
   },
   buttonContainer: {
-    marginTop: 30,
-    marginBottom: 15,
+    marginVertical: 15,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'

@@ -1,9 +1,10 @@
 import { Dimensions } from 'react-native';
 
-import { colors } from '../../config/styles';
+import { colors, typography } from '../../config/styles';
 
 import { StyleSheet } from 'react-native';
 
+const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
 export const styles = StyleSheet.create({
@@ -12,6 +13,13 @@ export const styles = StyleSheet.create({
     width: 50,
     marginTop: 70,
     marginHorizontal: (width / 2) - 20,
+  },
+  noFavesText: {
+    marginTop: height * 0.3,
+    alignSelf: 'center',
+    fontSize: typography.baseSize,
+    fontFamily: typography.fontMain,
+    color: colors.medGrey
   },
   sectionHeader: {
     paddingVertical: 5,
