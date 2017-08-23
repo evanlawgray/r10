@@ -1,0 +1,4 @@
+#Thu Jun 01 10:00:23 PDT 2017
+base.0=/Users/owner/Desktop/adp-projects/r10/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/owner/Desktop/adp-projects/r10/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
